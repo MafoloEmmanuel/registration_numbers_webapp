@@ -1,0 +1,1 @@
+create table registration_numbers(id serial not null, reg_number varchar(10));

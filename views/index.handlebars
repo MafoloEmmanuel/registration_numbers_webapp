@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration_numbers project</title>
+    <link rel="stylesheet" href="css/registration_number.css">
+    <link rel="stylesheet" href="./css/simple-grid.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12 heading">
+
+                    <h2><strong>Registration Numbers</strong></h2>
+                </div>
+    <form action="/reg_numbers" method="post">
+
+                <div class="col-12"> <span id="warning"></span></div>
+                <div class="row">
+                    <div class="warning">{{messages.info}}</div>
+                    <div class="col-12">
+                        <input type="text" id="regTextBox" size="45" value="{{registrations}}" placeholder="enter a registration number"
+                            name="registrations">
+                   <button type="submit" class="regButton"  name="button">Add</button>
+
+                    </div>
+                    
+                </div>
+                
+                </div>
+
+                <div class="col-12">
+                    
+                <p class="display">{{messages.display}}</p>
+    </form>
+<form action="/reset" method="post">
+    <button type="submit">Reset</button></form>
+</body>
+            </div>
+        </div>
+    
+    
+
+
+</html>
