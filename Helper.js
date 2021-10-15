@@ -38,7 +38,7 @@ return await pool.query(sql,[num]);
         return result.rows
      }
 
-     function fromTown(regNum, regLoc){
+     let  fromTown=(regNum, regLoc)=>{
         //console.log(regNum)
         var fromTown = regNum.split(',');
         //console.log(fromTown);
