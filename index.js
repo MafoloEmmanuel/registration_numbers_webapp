@@ -55,20 +55,25 @@ app.post('/reg_numbers', async(req,res)=>{
     if(reg == "" || reg === undefined ){
         req.flash('info', "Please enter a registration number!");
         res.render("index")
-    } else {
+    } 
+    else {
    await regNum.setNumbers(req.body.registrations)
 
-  await regNum.ShowAll();
+  let showAll = await regNum.ShowAll();
 
-        req.flash('display', reg)
    res.render("index",{
-   // display: showAll
+   display: showAll
 })
-    
-
     }
-   
 });
+app.post('/townsCheck', async(req,res)=>{
+    var setTown = req.body.setTown
+    await regNum.setTown(setTown);
+    res.render('index',{
+        display: await regNum.ShowAll()
+    });
+})
+
 app.post('/reset', async(req,res)=>{
     await regNum.reset()
     res.redirect('/')
