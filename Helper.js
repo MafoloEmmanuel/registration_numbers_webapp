@@ -22,6 +22,7 @@ return await pool.query(sql,[num]);
      var result = await pool.query('delete from registration_numbers');
      return result.rows
  }
+ /*
  let setTown = async(num)=>{
      var getStart = num.split(", ")
      var getTown =''
@@ -36,13 +37,12 @@ return await pool.query(sql,[num]);
         var result = await pool.query(sql, [getTown,getStart]);
         console.log(result.rows)
         return result.rows
-     }
+     }*/
 
-     let  fromTown=(regNum, regLoc)=>{
+     let  fromTown=async(regNum, regLoc)=>{
         //console.log(regNum)
         var fromTown = regNum.split(',');
         //console.log(fromTown);
-        var isTown = [];
         for(var i= 0;i<fromTown.length;i++){
           var town = fromTown[i].trim();
           console.log(town)
@@ -54,13 +54,10 @@ return await pool.query(sql,[num]);
               regLoc =="CN"
           }
           if(town.startsWith(regLoc)){
-          isTown.push(town);
-           //   console.log(isTown)
-      
+      var result = await pool.query('insert into towns (town,startswith) values ($1,$2) ', [fromTown,regLoc])
+      return result.rows
           }
         }
-       // console.log(isTown)
-       return isTown;
       }
 
  
@@ -69,7 +66,7 @@ setNumbers,
 ShowAll,
 showEach,
 reset,
-setTown,
+
 fromTown
 }
 }
