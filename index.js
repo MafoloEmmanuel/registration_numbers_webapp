@@ -51,7 +51,6 @@ app.use(express.json());
 
 app.get('/', regNumInsta.home);
 app.post('/reg_numbers', regNumInsta.setRegistrations);
-app.post('/townsCheck', regNumInsta.setTown);
 app.post('/reset', regNumInsta.resetRegistrations)
 app.post('/showAll', regNumInsta.showAll)
 

@@ -83,18 +83,24 @@ module.exports = (pool) => {
         console.log(result.rows)
         return result.rows
     }
-    let getTown = async () => {
-        var sql = "select town from towns "
-        var result = await pool.query(sql);
+    let getTown = async (town) => {
+        var sql = "select *  from towns where startswith =$1 "
+        var result = await pool.query(sql, [town]);
         console.log(result.rows)
         return result.rows
     }
     let filterTown =async(town)=>{
-
-        var sql = "select reg_number from towns join registration_numbers r on towns.id = r.town_id where startswith =$1 "
-        var result = await pool.query(sql,[town])
-        console.log(result.rows)
-        return result.rows
+        var result
+        if(town === "All"){
+            result = await pool.query('select reg_number from registrations');
+            return result.rows
+        } else{
+            var sql = "select reg_number from towns join registration_numbers r on towns.id = r.town_id where startswith =$1 "
+             result = await pool.query(sql,[town])
+            console.log(result.rows)
+            return result.rows
+        }
+  
     }
     return {
         setNumbers,

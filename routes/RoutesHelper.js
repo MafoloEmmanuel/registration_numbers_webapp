@@ -11,6 +11,7 @@ let home = async(req,res)=>{
 
 let setRegistrations = async(req,res)=>{
     var reg = req.body.registrations;
+    var setTown = req.body.town;
     if (reg === "") {
         req.flash('info', "Please enter a registration number!");
         res.render("index")
@@ -27,24 +28,32 @@ let setRegistrations = async(req,res)=>{
         res.redirect('/')
     }*/
     else {
-        await regNum.setNumbers(req.body.registrations)
+    await regNum.insert(req.body.registrations);
+    regNum.setTown(setTown);
+console.log(regNum.fromTown(reg,setTown))
+    await regNum.fromTown(reg,setTown)
+    await regNum.getTown()
         
 res.redirect('/')
     }
 }
 let showAll =async(req,res)=>{
-    let showAll = await regNum.ShowAll();
-
+    var setTown = req.body.town;
+    regNum.setTown(setTown);
+console.log(setTown);
+    var getTowns = req.params.selected
+ var show =await regNum.filterTown(getTowns);
     res.render("index",{
-            display: showAll
+display: show
     })
 }
+/*
 let setTown =async (req, res) => {
     var setTown = req.body.town;
     regNum.setTown(setTown);
     console.log(setTown);
      await regNum.getTown()
-}
+}*/
 
 let resetRegistrations =  async (req, res) => {
     await regNum.reset()
@@ -53,7 +62,7 @@ let resetRegistrations =  async (req, res) => {
 return {
     home,
     setRegistrations,
-    setTown,
+  //  setTown,
     resetRegistrations,
     showAll
 }
