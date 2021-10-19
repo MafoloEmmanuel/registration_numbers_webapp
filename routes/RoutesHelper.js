@@ -28,6 +28,7 @@ let setRegistrations = async(req,res)=>{
     }*/
     else {
         await regNum.setNumbers(req.body.registrations)
+        
 res.redirect('/')
     }
 }
