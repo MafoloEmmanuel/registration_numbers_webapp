@@ -24,38 +24,55 @@
                     <div class="row">
                         <div class="warning">{{messages.info}}</div>
                         <div class="col-12">
-                            <input type="text" id="regTextBox" size="45" value="{{registrations}}"
-                                placeholder="enter a registration number" name="registrations">
+                            <div> <span class="text"> Please enter a registration number e.g CA 123 AD</span>
+                            </div>
+                            <input type="text" class="regTextBox" size="45" value="{{registrations}}"
+                                placeholder="e.g CL 098 CF" name="registrations">
                             <button type="submit" class="regButton" name="button">Add</button>
 
                         </div>
 
                     </div>
-                    </form>
-                    <form action="townsCheck" method="post">
+                </form>
+                <form action="townsCheck" method="post">
                     <div class="col-12">
-                        <input type="radio" name="town"  value="CA" id="">
+                        <input type="radio" name="town" value="cape town" id="">
                         <span>Cape Town</span>
-                        <input type="radio" name="town" value="CL" id="">
+                        <input type="radio" name="town" value="stellenbosch" id="">
                         <span>Stellenbosch</span>
-                        <input type="radio" name="town" value="CN" id="">
+                        <input type="radio" name="town" value="wellington" id="">
                         <span>Wellington</span>
                         <button type="submit">Show</button>
                     </div>
-                    </form>
-                    <form action="/reset" method="post">
-                        <button type="submit">Reset</button>
-                    </form>
-
-                    <div class="col-12">
-                        <div>
-                            {{#each display}}
-                            <p class="results">
-                                    {{this.reg_number}}
-                            </p>
-                            {{/each}}
-                        </div>
+                </form>
+                <div class="col-12">
+                    <div class="col-2">
+                        <form action="/showAll" method="post">
+                            <button type="submit"> Show all</button>
+                        </form>
                     </div>
+                    <div class="col-8">
+                        <form action="/reset" method="post">
+                            <button type="submit">Reset</button>
+                        </form>
+                    </div>
+
+
+
+
+                </div>
+
+
+                <div class="col-12">
+                    <div>
+                        {{#each display}}
+                        <p class="results">
+                            {{this.reg_number}}
+                        </p>
+                        {{/each}}
+                    </div>
+                    {{town}}
+                </div>
 
 
 

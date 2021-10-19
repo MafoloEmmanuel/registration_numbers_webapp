@@ -50,3 +50,17 @@ ul{
     font-size: medium;
 }
 
+.text{
+    font-size: smaller;
+    color: grey;
+}
+@media (max-width: 800px){
+    .container{
+        display: block;
+        width: 100%;
+    }
+    .regTextBox{
+        display:block;
+        width: 100%
+    }
+}

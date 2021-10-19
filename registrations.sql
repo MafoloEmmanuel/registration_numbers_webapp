@@ -6,7 +6,7 @@ create table towns(
 
 create table registration_numbers(
     id serial not null primary key,
- reg_number varchar(10), 
+ reg_number varchar(15), 
  town_id int, 
  foreign key (town_id) references towns(id));
  
