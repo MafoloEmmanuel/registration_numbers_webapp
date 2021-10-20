@@ -28,11 +28,10 @@ let setRegistrations = async(req,res)=>{
         res.redirect('/')
     }*/
     else {
-    await regNum.insert(req.body.registrations);
+    await regNum.setNumbers(req.body.registrations);
     regNum.setTown(setTown);
-console.log(regNum.fromTown(reg,setTown))
-    await regNum.fromTown(reg,setTown)
-    await regNum.getTown()
+
+   // await regNum.fromTown(reg,)    
         
 res.redirect('/')
     }
@@ -47,13 +46,13 @@ console.log(setTown);
 display: show
     })
 }
-/*
+
 let setTown =async (req, res) => {
     var setTown = req.body.town;
     regNum.setTown(setTown);
     console.log(setTown);
      await regNum.getTown()
-}*/
+}
 
 let resetRegistrations =  async (req, res) => {
     await regNum.reset()
@@ -62,7 +61,7 @@ let resetRegistrations =  async (req, res) => {
 return {
     home,
     setRegistrations,
-  //  setTown,
+    setTown,
     resetRegistrations,
     showAll
 }

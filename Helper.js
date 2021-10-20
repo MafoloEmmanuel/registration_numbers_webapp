@@ -93,9 +93,10 @@ module.exports = (pool) => {
         var result
         if(town === "All"){
             result = await pool.query('select reg_number from registrations');
+           console.log(result)
             return result.rows
         } else{
-            var sql = "select reg_number from towns join registration_numbers r on towns.id = r.town_id where startswith =$1 "
+            var sql = "select reg_number from registration_numbers where town_id =$1 "
              result = await pool.query(sql,[town])
             console.log(result.rows)
             return result.rows
