@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration_numbers project</title>
     <link rel="stylesheet" href="css/registration_number.css">
     <link rel="stylesheet" href="./css/simple-grid.css">
+    <title>Registration_numbers project</title>
+
 </head>
 
 <body>
@@ -24,58 +25,56 @@
                     <div class="row">
                         <div class="warning">{{messages.info}}</div>
                         <div class="col-12">
-                            <div> <span class="text"> Please enter a registration number e.g CA 123 AD</span>
+                            <div> <span class="text"> Please enter a registration number in this format: CA-123-45, CA
+                                    123 456 or CN345789 </span>
                             </div>
                             <input type="text" class="regTextBox" size="45" value="{{registrations}}"
-                                placeholder="e.g CL 098 CF" name="registrations">
+                                placeholder="e.g CL 098 567" name="registrations">
                             <button type="submit" class="regButton" name="button">Add</button>
 
                         </div>
 
                     </div>
                 </form>
-                <form action="/showAll" method="post">
+                <form action="/filter" method="post">
                     <div class="col-12">
-                        <input type="radio" name="town" value="cape town" id="">
+                        <input type="radio" name="town" value="CA" id="">
                         <span>Cape Town</span>
-                        <input type="radio" name="town" value="stellenbosch" id="">
+                        <input type="radio" name="town" value="CL" id="">
                         <span>Stellenbosch</span>
-                        <input type="radio" name="town" value="wellington" id="">
+                        <input type="radio" name="town" value="CN" id="">
                         <span>Wellington</span>
-                        <input type="radio" name="town" value="all" id="">
-                        <span>All</span>
                         <button type="submit">Show</button>
+
                     </div>
                 </form>
-                
-                    <div class="col-8">
-                        <form action="/reset" method="post">
-                            <button type="submit">Reset</button>
-                        </form>
-                    </div>
-
-
-
-
+                <form action="/all" method="post">
+                    <button type="submit">Show all</button>
+                </form>
+                <div class="col-8">
+                    <form action="/reset" method="post">
+                        <button type="submit">Reset</button>
+                    </form>
                 </div>
 
+            </div>
+        </div>
 
-                <div class="col-12">
-                    <div>
-                        {{#each display}}
-                        <p class="results">
-                            {{this.reg_number}}
-                        </p>
-                        {{/each}}
-                    </div>
-                    {{town}}
-                </div>
+        <div class="display ">
+            {{#each display}}
+            <h3 class="results">{{this.reg_number}}</h3>
+
+            {{/each}}
+
+        </div>
+
+
+    </div>
 
 
 
 </body>
-</div>
-</div>
+
 
 
 

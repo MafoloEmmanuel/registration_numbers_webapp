@@ -42,7 +42,7 @@ ul{
 }
 .results{
     border:1px solid black;
-    border-radius: 2.5em;
+    border-radius: 0.25em;
     background-color: white;
     color: black;
    /* padding: 5px;*/

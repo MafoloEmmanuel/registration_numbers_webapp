@@ -52,7 +52,8 @@ app.use(express.json());
 app.get('/', regNumInsta.home);
 app.post('/reg_numbers', regNumInsta.setRegistrations);
 app.post('/reset', regNumInsta.resetRegistrations)
-app.post('/showAll', regNumInsta.showAll)
+app.post('/filter', regNumInsta.filter);
+app.post('/all', regNumInsta.all)
 
 const PORT = process.env.PORT || 3013;
 app.listen(PORT, () => {
