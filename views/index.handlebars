@@ -25,11 +25,11 @@
                     <div class="row">
                         <div class="warning">{{messages.info}}</div>
                         <div class="col-12">
-                            <div> <span class="text"> Please enter a registration number in this format: CA-123-45, CA
-                                    123 456 or CN345789 </span>
+                            <div> <span class="text"> Please enter a registration number in this format: CA-123-45 and  CA
+                                    123 456 </span>
                             </div>
                             <input type="text" class="regTextBox" size="45" value="{{registrations}}"
-                                placeholder="e.g CL 098 567" name="registrations">
+                                placeholder="e.g CL 123 456/ CL-123-456" name="registrations">
                             <button type="submit" class="regButton" name="button">Add</button>
 
                         </div>
@@ -44,13 +44,14 @@
                         <span>Stellenbosch</span>
                         <input type="radio" name="town" value="CN" id="">
                         <span>Wellington</span>
+                        <input type="radio" name="town" value="C" id="">
+                        <span>All</span>
+
                         <button type="submit">Show</button>
 
                     </div>
                 </form>
-                <form action="/all" method="post">
-                    <button type="submit">Show all</button>
-                </form>
+
                 <div class="col-8">
                     <form action="/reset" method="post">
                         <button type="submit">Reset</button>
@@ -62,7 +63,7 @@
 
         <div class="display ">
             {{#each display}}
-            <h3 class="results">{{this.reg_number}}</h3>
+            <span class="results">{{this.reg_number}}</span>
 
             {{/each}}
 

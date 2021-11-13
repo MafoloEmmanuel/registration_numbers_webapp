@@ -48,11 +48,18 @@ return sql.rows[0].id
         console.log(town)
         var getId = await getTownId(town)
         result =[]
+        if(town==='C'){
+            console.log('!!!!!!!!!!!!')
+            var result = await pool.query('select reg_number from registration_numbers');
+            return result.rows
+        } else{
             var sql = " select * from registration_numbers where town_id =$1" 
             result = await pool.query(sql,[getId])
             console.log(result.rows )
    console.log('Retang')
             return result.rows
+        }
+           
     }
     return {
         insertPlates,

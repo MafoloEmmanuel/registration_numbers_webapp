@@ -45,8 +45,8 @@ ul{
     border-radius: 0.25em;
     background-color: white;
     color: black;
-   /* padding: 5px;*/
     width: 100px;
+    margin: 2px;
     font-size: medium;
 }
 
