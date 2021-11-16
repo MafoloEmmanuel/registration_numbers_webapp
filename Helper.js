@@ -8,7 +8,7 @@ module.exports = (pool) => {
         var regNum = num.toUpperCase()
         var setLoc = regNum.substring(0, 2)
         var getId = await getTownId(setLoc);
-
+        
         var checkRegNum = await pool.query("select reg_number from registration_numbers where reg_number =$1 ", [regNum]);
 
         if (checkRegNum.rows.length < 1) {
@@ -29,9 +29,11 @@ module.exports = (pool) => {
 
 
     let filterTown = async (town) => {
+        //console.log(town)
         var getId = await getTownId(town)
         result = [];
 
+      //  console.log(result)
         
         if (town === 'C') {
             var result = await pool.query('select reg_number from registration_numbers');
