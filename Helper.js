@@ -22,7 +22,7 @@ module.exports = (pool) => {
     }
 
     let getAllPlates = async () => {
-        var sql = 'select reg_number,town_id from registration_numbers';
+        var sql = 'select reg_number from registration_numbers';
         var result = await pool.query(sql);
         return result.rows
     }
@@ -39,7 +39,7 @@ module.exports = (pool) => {
             var result = await pool.query('select reg_number from registration_numbers');
             return result.rows
         } else {
-            var sql = " select reg_number,town_id from registration_numbers where town_id =$1"
+            var sql = " select reg_number from registration_numbers where town_id =$1"
             result = await pool.query(sql, [getId]);
             return result.rows
         }

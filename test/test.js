@@ -48,15 +48,12 @@ describe('Registration numbers web app', () => {
         assert.deepEqual([
             {
                 reg_number: 'CA 123 344',
-                town_id: 7
             },
             {
                 reg_number: 'CN 003 554',
-                town_id: 9
             },
             {
                 reg_number: 'CL 111 200',
-                town_id: 8
             }
         ], await regNumInsta.getAllPlates())
 
@@ -74,15 +71,12 @@ describe('Registration numbers web app', () => {
         assert.deepEqual([
             {
                 reg_number: 'CA 123 344',
-                town_id: 7
             },
             {
                 reg_number: 'CA 003 844',
-                town_id: 7
             },
             {
                 reg_number: 'CA 100 204',
-                town_id: 7
             }
         ], await regNumInsta.filterTown('CA'))
 
@@ -101,15 +95,12 @@ describe('Registration numbers web app', () => {
         assert.deepEqual([
             {
                 reg_number: 'CL 111 200',
-                town_id: 8
             },
             {
                 reg_number: 'CL 100 700',
-                town_id: 8
             },
             {
                 reg_number: 'CL 102 310',
-                town_id: 8
             }], await regNumInsta.filterTown('CL'))
     });
     it('Should get all the number plates for Wellington', async () => {
@@ -123,15 +114,12 @@ describe('Registration numbers web app', () => {
         assert.deepEqual([
             {
                 reg_number: 'CN 088 054',
-                town_id: 9
             },
             {
                 reg_number: 'CN 003 554',
-                town_id: 9
             },
             {
                 reg_number: 'CN 105 666',
-                town_id: 9
             }], await regNumInsta.filterTown('CN'))
     });
 
