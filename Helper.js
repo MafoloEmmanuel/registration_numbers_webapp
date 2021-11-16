@@ -8,7 +8,7 @@ module.exports = (pool) => {
         var regNum = num.toUpperCase()
         var setLoc = regNum.substring(0, 2)
         var getId = await getTownId(setLoc);
-        
+
         var checkRegNum = await pool.query("select reg_number from registration_numbers where reg_number =$1 ", [regNum]);
 
         if (checkRegNum.rows.length < 1) {
@@ -20,7 +20,10 @@ module.exports = (pool) => {
         var sql = await pool.query("select id from towns where startswith=$1", [regLoc]);
         return sql.rows[0].id
     }
-
+    let getTown = async (regLoc) => {
+        var result = await pool.query('select town from towns where startswith=$1', [regLoc])
+        return result.rows
+    }
     let getAllPlates = async () => {
         var sql = 'select reg_number from registration_numbers';
         var result = await pool.query(sql);
@@ -33,8 +36,8 @@ module.exports = (pool) => {
         var getId = await getTownId(town)
         result = [];
 
-      //  console.log(result)
-        
+        //  console.log(result)
+
         if (town === 'C') {
             var result = await pool.query('select reg_number from registration_numbers');
             return result.rows
@@ -43,7 +46,7 @@ module.exports = (pool) => {
             result = await pool.query(sql, [getId]);
             return result.rows
         }
-        
+
 
     }
     return {
@@ -51,7 +54,8 @@ module.exports = (pool) => {
         getAllPlates,
         reset,
         filterTown,
-        getTownId
+        getTownId,
+        getTown
 
     }
 }

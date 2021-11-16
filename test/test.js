@@ -25,21 +25,30 @@ describe('Registration numbers web app', () => {
         await pool.query('delete  from registration_numbers');
     })
     let regNumInsta = Helper(pool);
-    it('Should get town Id for Cape Town', async () => {
+    it('Should get Cape Town for registration plates that starts with "CA"', async () => {
         await regNumInsta.getTownId('CA');
-        assert.deepEqual(7, await regNumInsta.getTownId('CA'))
-    })
-
-    it('Should get town Id for Stellenbosch', async () => {
+        assert.deepEqual([
+            {
+              town: 'Cape Town'
+            }
+          ], await regNumInsta.getTown('CA'))
+    });
+    it('Should get Stellenbosch for registration plates that starts with "CL"', async () => {
         await regNumInsta.getTownId('CL');
-        assert.deepEqual(8, await regNumInsta.getTownId('CL'))
-    })
-
-    it('Should get town Id for Wellington', async () => {
+        assert.deepEqual([
+            {
+              town: 'Stellenbosch'
+            }
+          ], await regNumInsta.getTown('CL'));
+    });
+    it('Should get Wellington for registration plates that starts with "CN"', async () => {
         await regNumInsta.getTownId('CN');
-        assert.deepEqual(9, await regNumInsta.getTownId('CN'))
-    })
-
+        assert.deepEqual([
+            {
+              town: 'Wellington'
+            }
+          ], await regNumInsta.getTown('CN'))
+    });
     it('Should get all the number plates stored', async () => {
 
         await regNumInsta.insertPlates('CA 123 344')
