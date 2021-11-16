@@ -26,8 +26,8 @@ pool.on('connect', () => {
 })
 
 const regNum = Helper(pool);
-const RoutesHelper = require('./routes/RoutesHelper');
-const regNumInsta = RoutesHelper(regNum)
+const Routes_Helper = require('./routes/Routes_Helper');
+const regNumInsta = Routes_Helper(regNum)
 const handlebarSetup = exphbs({
     partialsDir: "./views/partials",
     viewPath: './views',

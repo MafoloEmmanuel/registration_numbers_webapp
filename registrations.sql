@@ -12,4 +12,7 @@ create table registration_numbers(
  INSERT INTO towns(town, startswith) VALUES ('Cape Town', 'CA');
  INSERT INTO towns(town, startswith) VALUES ('Stellenbosch', 'CL');
  INSERT INTO towns(town, startswith) VALUES ('Wellington', 'CN');
+ INSERT INTO towns(town, startswith) VALUES ('All', 'C');
+
+
 
